@@ -5,20 +5,20 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 app.use(cors());
-
+app.use(middleware.cors);
 app.use(express.json());
 app.use(bodyParser.json());
 
 const dbURI =
   "mongodb+srv://satwik12:satwik12@cluster0.zhqihgx.mongodb.net/test";
+
+// const dbURI = "mongodb://localhost/blogApp";
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log("Done");
   })
   .catch((e) => console.log(e));
-
-app.use(middleware.cors);
 
 const RegisterFormSchema = new mongoose.Schema({
   firstName: String,
