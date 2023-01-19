@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 app.use(cors());
-app.use(middleware.cors);
+
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -17,6 +17,8 @@ mongoose
     console.log("Done");
   })
   .catch((e) => console.log(e));
+
+app.use(middleware.cors);
 
 const RegisterFormSchema = new mongoose.Schema({
   firstName: String,
