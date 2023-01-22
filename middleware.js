@@ -5,7 +5,7 @@ module.exports = {
 function cors(req, res, next) {
   const origin = req.headers.origin;
 
-  res.setHeader("Access-Control-Allow-Origin", origin || "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "POST, GET, PUT, DELETE, OPTIONS, XMODIFY"
@@ -16,11 +16,6 @@ function cors(req, res, next) {
     "Access-Control-Allow-Headers",
     "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept,privateKey"
   );
-  res.setHeader("Access-Control-Allow-Origin: *");
-
-  res.setHeader("Access-Control-Allow-Methods: GET, POST");
-
-  res.setHeader("Access-Control-Allow-Headers: X-Requested-With");
 
   next();
 }
