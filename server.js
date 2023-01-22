@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const middleware = require("./middleware");
 const app = express();
@@ -8,6 +9,7 @@ app.use(cors());
 app.use(middleware.cors);
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 const dbURI =
   "mongodb+srv://satwik12:satwik12@cluster0.zhqihgx.mongodb.net/test";
@@ -33,10 +35,6 @@ const RegisterFormSchema = new mongoose.Schema({
 });
 
 const RegisterForm = mongoose.model("RegisterForm", RegisterFormSchema);
-
-app.get("/", (req, res) => {
-  res.send("lol");
-});
 
 app.post("/register", async (req, res) => {
   const Register = new RegisterForm({
