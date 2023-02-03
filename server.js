@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 app.use(cors());
 app.use(middleware.cors);
 app.use((req, res, next) => {
@@ -15,10 +16,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-const dbURI =
-  "mongodb+srv://satwik12:satwik12@cluster0.zhqihgx.mongodb.net/test";
+// const dbURI =
+// "mongodb+srv://satwik12:satwik12@cluster0.zhqihgx.mongodb.net/test";
 
-// const dbURI = "mongodb://localhost/blogApp";
+const dbURI = "mongodb://localhost/blogApp";
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
@@ -56,7 +57,6 @@ app.post("/register", async (req, res) => {
   await Register.save();
   res.json(Register);
 });
-
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 1338;
 
 app.listen(port);
